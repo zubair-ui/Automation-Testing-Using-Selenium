@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z2X92svUZjo=",
+  "success": true,
+  "projectFilePath": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\TheInternetTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Zubair\\.nuget\\packages\\selenium.support\\4.32.0\\selenium.support.4.32.0.nupkg.sha512",
+    "C:\\Users\\Zubair\\.nuget\\packages\\selenium.webdriver\\4.32.0\\selenium.webdriver.4.32.0.nupkg.sha512",
+    "C:\\Users\\Zubair\\.nuget\\packages\\selenium.webdriver.chromedriver\\136.0.7103.9200\\selenium.webdriver.chromedriver.136.0.7103.9200.nupkg.sha512"
+  ],
+  "logs": []
+}
