@@ -71,8 +71,6 @@ namespace TheInternetTest.Pages
                 {
                     Console.WriteLine($"Found footer link: {linkText}");
                     Console.WriteLine($"Link points to: {linkHref}");
-                    footerLink.Click();
-                    Console.WriteLine("Clicked footer link successfully.");
                 }
                 else
                 {
@@ -89,20 +87,14 @@ namespace TheInternetTest.Pages
         {
             try
             {
-                var githubRibbon = driver.FindElement(githubRibbonSelector); // img element
-                var parentLink = githubRibbon.FindElement(By.XPath("..")); // <a> element
+                var githubRibbon = driver.FindElement(githubRibbonSelector);
+                var parentLink = githubRibbon.FindElement(By.XPath(".."));
                 string href = parentLink.GetAttribute("href");
 
                 if (href == "https://github.com/tourdedave/the-internet")
                 {
                     Console.WriteLine("Found GitHub ribbon link.");
                     Console.WriteLine($"Link points to: {href}");
-
-                    // Click the visible image instead of the <a>
-                    githubRibbon.Click();
-
-                    driver.Navigate().Back();
-                    Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
                 {

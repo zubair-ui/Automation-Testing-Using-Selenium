@@ -26,9 +26,10 @@ namespace TheInternetTest
                 //RunDragAndDropPageTests(driver);
                 //RunDropdownPageTests(driver);
                 //RunDynamicContentPageTests(driver);
-                //RunDynamicControlsTests(driver);
-
-
+                //RunDynamicControlsPageTests(driver);
+                //RunDynamicLoadingPageTests(driver);
+                //RunEntryAdPageTests(driver);
+                RunExitIntentPageTests(driver);
             }
             catch (Exception ex)
             {
@@ -187,16 +188,48 @@ namespace TheInternetTest
         }
 
         // Function to execute Dynamic Controls page tests
-        static void RunDynamicControlsTests(IWebDriver driver)
+        static void RunDynamicControlsPageTests(IWebDriver driver)
         {
-            Console.WriteLine("===== Starting Dynamic Controls Tests =====");
+            Console.WriteLine("===== Starting Dynamic Controls Page Tests =====");
 
             DynamicControlsPage dynamicControlsPage = new DynamicControlsPage(driver);
             dynamicControlsPage.ExecuteAll();
 
-            Console.WriteLine("===== Dynamic Controls Tests Completed =====\n");
+            Console.WriteLine("===== Dynamic Controls Page Tests Completed =====\n");
         }
 
+        // Function to execute Dynamic Loading page tests
+        static void RunDynamicLoadingPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Dynamic Loading Page Tests =====");
+
+            var dynamicLoadingPage = new DynamicLoadingPage(driver);
+            dynamicLoadingPage.ExecuteAll();
+
+            Console.WriteLine("===== Dynamic Loading Page Tests Completed =====\n");
+        }
+
+        // Function to execute Entry Ad page tests
+        static void RunEntryAdPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Entry Ad Page Tests =====");
+
+            var entryAdPage = new TheInternetTest.Pages.EntryAdPage(driver);
+            entryAdPage.ExecuteAll();
+
+            Console.WriteLine("===== Entry Ad Page Tests Completed =====\n");
+        }
+
+        // Function to execute Exit Intent page tests
+        static void RunExitIntentPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Exit Intent Page Tests =====");
+
+            ExitIntentPage exitIntentPage = new ExitIntentPage(driver);
+            exitIntentPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Exit Intent Page Tests Completed =====\n");
+        }
 
     }
 }

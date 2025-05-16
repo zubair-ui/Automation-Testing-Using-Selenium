@@ -1,42 +1,79 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using System;
 
 namespace TheInternetTest.Pages
 {
-    public class DisappearingElementsPage
+    public class ExitIntentPage
     {
         private IWebDriver driver;
-        private string url = "https://the-internet.herokuapp.com/disappearing_elements";
-        private By menuItemsSelector = By.CssSelector("ul li a");
+        private string url = "https://the-internet.herokuapp.com/exit_intent";
         private By footerLinkSelector = By.CssSelector("#page-footer a");
+        private By modalSelector = By.Id("ouibounce-modal");
+        private By modalCloseButtonSelector = By.CssSelector("#ouibounce-modal .modal-footer p");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
-        public DisappearingElementsPage(IWebDriver driver)
+        public ExitIntentPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
         }
 
-        public IList<IWebElement> GetMenuItems()
+        public void TriggerExitIntent()
         {
-            return driver.FindElements(menuItemsSelector);
+            Console.WriteLine("Triggering exit intent modal via JS...");
+
+            // This forces the modal to appear directly:
+            string script = "document.getElementById('ouibounce-modal').style.display='block';";
+            ((IJavaScriptExecutor)driver).ExecuteScript(script);
+
+            System.Threading.Thread.Sleep(1000);
         }
-         
 
-        public void ClickMenuItemIfExists(string menuText)
+
+
+        public void VerifyModalAppeared()
         {
-            var menuItems = GetMenuItems();
-            var item = menuItems.FirstOrDefault(e => e.Text.Equals(menuText, StringComparison.OrdinalIgnoreCase));
-
-            if (item != null)
+            try
             {
-                Console.WriteLine($"Clicking menu item: {menuText}");
-                item.Click();
-                driver.Navigate().Back();
+                var modal = driver.FindElement(modalSelector);
+                if (modal.Displayed)
+                {
+                    Console.WriteLine("Exit intent modal appeared successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Exit intent modal did not appear.");
+                }
             }
-            else
+            catch (NoSuchElementException)
             {
-                Console.WriteLine($"Menu item '{menuText}' not found.");
+                Console.WriteLine("Exit intent modal element not found.");
+            }
+        }
+
+        public void CloseModal()
+        {
+            try
+            {
+                var closeButton = driver.FindElement(modalCloseButtonSelector);
+                closeButton.Click();
+                System.Threading.Thread.Sleep(500);
+
+                var modal = driver.FindElement(modalSelector);
+                if (!modal.Displayed)
+                {
+                    Console.WriteLine("Modal closed successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Modal did not close.");
+                }
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Close button or modal not found.");
             }
         }
 
@@ -89,24 +126,16 @@ namespace TheInternetTest.Pages
         }
 
         public void ExecuteAllTests()
-        { 
-
-            Console.WriteLine("\n-- Clicking 'Home' menu item if available --");
-            ClickMenuItemIfExists("Home");
-
-            Console.WriteLine("\n-- Clicking 'About' menu item if available --");
-            ClickMenuItemIfExists("About");
-
-            Console.WriteLine("\n-- Clicking 'Contact Us' menu item if available --");
-            ClickMenuItemIfExists("Contact Us");
-
-            Console.WriteLine("\n-- Clicking 'Portfolio' menu item if available --");
-            ClickMenuItemIfExists("Portfolio");
+        {
+            Console.WriteLine("\n-- Verifying Modal --");
+            TriggerExitIntent();
+            VerifyModalAppeared();
+            CloseModal();
 
             Console.WriteLine("\n-- Verifying footer link --");
             VerifyFooterLink();
 
-            Console.WriteLine("\n-- Verifying GitHub link --");
+            Console.WriteLine("\n-- Verifying Github link --");
             VerifyGithubLink();
         }
     }

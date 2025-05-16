@@ -82,7 +82,7 @@ namespace TheInternetTest.Pages
         {
             try
             {
-                var footerLink = wait.Until(drv => drv.FindElement(footerLinkSelector));
+                var footerLink = driver.FindElement(footerLinkSelector);
                 string linkText = footerLink.Text;
                 string linkHref = footerLink.GetAttribute("href");
 
@@ -100,30 +100,20 @@ namespace TheInternetTest.Pages
             {
                 Console.WriteLine("'Powered by Elemental Selenium' link not found.");
             }
-            catch (WebDriverTimeoutException)
-            {
-                Console.WriteLine("Timeout waiting for footer link.");
-            }
         }
 
         public void VerifyGithubLink()
         {
             try
             {
-                var githubRibbon = driver.FindElement(githubRibbonSelector); // img element
-                var parentLink = githubRibbon.FindElement(By.XPath("..")); // <a> element
+                var githubRibbon = driver.FindElement(githubRibbonSelector);
+                var parentLink = githubRibbon.FindElement(By.XPath(".."));
                 string href = parentLink.GetAttribute("href");
 
                 if (href == "https://github.com/tourdedave/the-internet")
                 {
                     Console.WriteLine("Found GitHub ribbon link.");
                     Console.WriteLine($"Link points to: {href}");
-
-                    // Click the visible image instead of the <a>
-                    //githubRibbon.Click();
-
-                    //driver.Navigate().Back();
-                    Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
                 {

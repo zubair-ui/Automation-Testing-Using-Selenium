@@ -1,43 +1,28 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI; 
 
 namespace TheInternetTest.Pages
 {
-    public class DisappearingElementsPage
+    public class DynamicLoadingPage
     {
-        private IWebDriver driver;
-        private string url = "https://the-internet.herokuapp.com/disappearing_elements";
-        private By menuItemsSelector = By.CssSelector("ul li a");
-        private By footerLinkSelector = By.CssSelector("#page-footer a");
-        private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
+        private readonly IWebDriver driver;
+        private readonly WebDriverWait wait;
 
-        public DisappearingElementsPage(IWebDriver driver)
+        private readonly string url = "https://the-internet.herokuapp.com/dynamic_loading";
+
+        // Selectors
+        private readonly By example1Link = By.LinkText("Example 1: Element on page that is hidden");
+        private readonly By example2Link = By.LinkText("Example 2: Element rendered after the fact");
+
+        private readonly By footerLinkSelector = By.CssSelector("#page-footer a[target='_blank']");
+        private readonly By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img");
+
+        public DynamicLoadingPage(IWebDriver driver)
         {
             this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
-        }
-
-        public IList<IWebElement> GetMenuItems()
-        {
-            return driver.FindElements(menuItemsSelector);
-        }
-         
-
-        public void ClickMenuItemIfExists(string menuText)
-        {
-            var menuItems = GetMenuItems();
-            var item = menuItems.FirstOrDefault(e => e.Text.Equals(menuText, StringComparison.OrdinalIgnoreCase));
-
-            if (item != null)
-            {
-                Console.WriteLine($"Clicking menu item: {menuText}");
-                item.Click();
-                driver.Navigate().Back();
-            }
-            else
-            {
-                Console.WriteLine($"Menu item '{menuText}' not found.");
-            }
         }
 
         public void VerifyFooterLink()
@@ -88,26 +73,46 @@ namespace TheInternetTest.Pages
             }
         }
 
-        public void ExecuteAllTests()
-        { 
+        public void ClickExample1()
+        {
+            var link = wait.Until(drv => drv.FindElement(example1Link));
+            Console.WriteLine($"Clicking: {link.Text}");
+            link.Click();
 
-            Console.WriteLine("\n-- Clicking 'Home' menu item if available --");
-            ClickMenuItemIfExists("Home");
+            var example1Page = new DynamicLoadingExample1Page(driver);
+            example1Page.StartLoading();
 
-            Console.WriteLine("\n-- Clicking 'About' menu item if available --");
-            ClickMenuItemIfExists("About");
+            driver.Navigate().Back();
+        }
 
-            Console.WriteLine("\n-- Clicking 'Contact Us' menu item if available --");
-            ClickMenuItemIfExists("Contact Us");
+        public void ClickExample2()
+        {
+            driver.Navigate().GoToUrl(url);
+            var link = wait.Until(drv => drv.FindElement(example2Link));
+            Console.WriteLine($"Clicking: {link.Text}");
+            link.Click();
 
-            Console.WriteLine("\n-- Clicking 'Portfolio' menu item if available --");
-            ClickMenuItemIfExists("Portfolio");
+            var example2Page = new DynamicLoadingExample2Page(driver);
+            example2Page.StartLoading();
+
+            driver.Navigate().Back();
+        }
+
+         
+        public void ExecuteAll()
+        {
+
+            // Click example links and return back
+            ClickExample1();
+
+            ClickExample2();
 
             Console.WriteLine("\n-- Verifying footer link --");
             VerifyFooterLink();
 
-            Console.WriteLine("\n-- Verifying GitHub link --");
+            Console.WriteLine("\n-- Verifying Github link --");
             VerifyGithubLink();
+
         }
     }
 }
