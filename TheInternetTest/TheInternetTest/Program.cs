@@ -35,7 +35,13 @@ namespace TheInternetTest
                 //RunFloatingMenuPageTests(driver);
                 //RunForgotPasswordPageTests(driver);
                 //RunFormAuthenticationPageTests(driver);
-                RunFramesPageTests(driver);
+                //RunFramesPageTests(driver);
+                //RunGeolocationPageTests(driver);
+                //RunSliderPageTests(driver);
+                //RunHoversPageTests(driver);
+                //RunInfiniteScrollPageTests(driver);
+                RunInputsPageTests(driver);
+
             }
             catch (Exception ex)
             {
@@ -301,6 +307,62 @@ namespace TheInternetTest
             framesPage.ExecuteAllTests();
 
             Console.WriteLine("===== Frames Page Tests Completed =====\n");
+        }
+
+        // Function to execute Geolocation page tests
+        static void RunGeolocationPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Geolocation Page Tests =====");
+
+            GeolocationPage geoPage = new GeolocationPage(driver);
+            geoPage.ExecuteAllTests();
+
+
+            Console.WriteLine("===== Geolocation Tests Completed =====\n");
+        }
+
+        // Function to execute Slider page tests
+        static void RunSliderPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Slider Page Tests =====");
+
+            SliderPage sliderPage = new SliderPage(driver);
+            sliderPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Slider Page Tests Completed =====\n");
+        }
+
+        // Function to execute Hovers page tests
+        static void RunHoversPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Hovers Page Tests =====");
+
+            var hoversPage = new HoversPage(driver);
+            hoversPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Hovers Page Tests Completed =====\n");
+        }
+
+        // Function to execute Infinite Scroll page tests
+        static void RunInfiniteScrollPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Infinite Scroll Page Tests =====");
+
+            var infiniteScrollPage = new InfiniteScrollPage(driver);
+            infiniteScrollPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Infinite Scroll Page Tests Completed =====\n");
+        }
+
+        // Function to execute Inputs page tests
+        static void RunInputsPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Inputs Page Tests =====");
+
+            InputsPage inputsPage = new InputsPage(driver);
+            inputsPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Inputs Page Tests Completed =====\n");
         }
 
     }
