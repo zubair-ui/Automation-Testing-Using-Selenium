@@ -19,3 +19,4 @@ D:\Zubair\study\SQA BootCamp\Bootcamp Project\TheInternetTest\TheInternetTest\ob
 D:\Zubair\study\SQA BootCamp\Bootcamp Project\TheInternetTest\TheInternetTest\obj\Debug\net8.0\TheInternetTest.pdb
 D:\Zubair\study\SQA BootCamp\Bootcamp Project\TheInternetTest\TheInternetTest\obj\Debug\net8.0\TheInternetTest.genruntimeconfig.cache
 D:\Zubair\study\SQA BootCamp\Bootcamp Project\TheInternetTest\TheInternetTest\obj\Debug\net8.0\ref\TheInternetTest.dll
+D:\Zubair\study\SQA BootCamp\Bootcamp Project\TheInternetTest\TheInternetTest\obj\Debug\net8.0\TheInternetTest.sourcelink.json

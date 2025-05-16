@@ -10,7 +10,7 @@ namespace TheInternetTest.Pages
         private string url = "https://the-internet.herokuapp.com/add_remove_elements/";
         private By addElementButton = By.XPath("//button[text()='Add Element']");
         private By deleteButtons = By.CssSelector("#elements button");
-        private By footerLink = By.CssSelector("#page-footer a");
+        private By footerLinkSelector = By.CssSelector("#page-footer a");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
         public AddRemoveElementsPage(IWebDriver driver)
@@ -84,16 +84,15 @@ namespace TheInternetTest.Pages
         {
             try
             {
-                var footer = driver.FindElement(footerLink);
-                string linkText = footer.Text;
-                string linkHref = footer.GetAttribute("href");
+                var footerLink = driver.FindElement(footerLinkSelector);
+                string linkText = footerLink.Text;
+                string linkHref = footerLink.GetAttribute("href");
 
                 if (linkText.Contains("Elemental Selenium"))
                 {
-                    Console.WriteLine("Found footer link: " + linkText);
-                    Console.WriteLine("Link points to: " + linkHref);
-
-                    footer.Click();
+                    Console.WriteLine($"Found footer link: {linkText}");
+                    Console.WriteLine($"Link points to: {linkHref}");
+                    footerLink.Click();
                     Console.WriteLine("Clicked footer link successfully.");
                 }
                 else
@@ -111,17 +110,24 @@ namespace TheInternetTest.Pages
         {
             try
             {
-                var githubRibbon = driver.FindElement(githubRibbonSelector);
-                var parentLink = githubRibbon.FindElement(By.XPath("..")); // get the anchor element
+                var githubRibbon = driver.FindElement(githubRibbonSelector); // img element
+                var parentLink = githubRibbon.FindElement(By.XPath("..")); // <a> element
                 string href = parentLink.GetAttribute("href");
 
                 if (href == "https://github.com/tourdedave/the-internet")
                 {
-                    Console.WriteLine("GitHub ribbon link found and verified.");
+                    Console.WriteLine("Found GitHub ribbon link.");
+                    Console.WriteLine($"Link points to: {href}");
+
+                    // Click the visible image instead of the <a>
+                    githubRibbon.Click();
+
+                    driver.Navigate().Back();
+                    Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
                 {
-                    Console.WriteLine($"GitHub ribbon link href mismatch: {href}");
+                    Console.WriteLine("GitHub ribbon link href mismatch.");
                 }
             }
             catch (NoSuchElementException)

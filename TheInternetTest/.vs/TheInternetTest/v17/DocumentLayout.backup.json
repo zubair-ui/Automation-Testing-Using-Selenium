@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\draganddroppage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\draganddroppage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\checkboxespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\checkboxespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,10 +36,49 @@
               "RelativeDocumentMoniker": "TheInternetTest\\Program.cs",
               "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Program.cs",
               "RelativeToolTip": "TheInternetTest\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAkwBAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T13:03:27.416Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomePage.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\HomePage.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
+              "RelativeToolTip": "TheInternetTest\\Pages\\HomePage.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T04:51:21.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DragAndDropPage.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\DragAndDropPage.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\DragAndDropPage.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\DragAndDropPage.cs",
+              "RelativeToolTip": "TheInternetTest\\Pages\\DragAndDropPage.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T04:42:45.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CheckboxesPage.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\CheckboxesPage.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\CheckboxesPage.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\CheckboxesPage.cs",
+              "RelativeToolTip": "TheInternetTest\\Pages\\CheckboxesPage.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAUwA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T04:32:46.478Z",
               "EditorCaption": ""
             }
           ]

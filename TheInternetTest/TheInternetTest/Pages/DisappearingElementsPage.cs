@@ -1,62 +1,43 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace TheInternetTest.Pages
 {
-    public class HomePage
+    public class DisappearingElementsPage
     {
         private IWebDriver driver;
-        private string url = "https://the-internet.herokuapp.com/";
+        private string url = "https://the-internet.herokuapp.com/disappearing_elements";
+        private By menuItemsSelector = By.CssSelector("ul li a");
         private By footerLinkSelector = By.CssSelector("#page-footer a");
-        private By homePageLinksSelector = By.CssSelector("ul li a");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
-        public HomePage(IWebDriver driver)
+        public DisappearingElementsPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
         }
 
-        public void ExecuteAllTests()
+        public IList<IWebElement> GetMenuItems()
         {
-
-            Console.WriteLine("\n-- Verifying and Clicking all links --");
-            VerifyAndClickAllLinks();
-            
-            Console.WriteLine("\n-- Verifying footer link --");
-            VerifyFooterLink();
-
-            Console.WriteLine("\n-- Verifying Github link --");
-            VerifyGithubLink();
+            return driver.FindElements(menuItemsSelector);
         }
          
 
-        public void VerifyAndClickAllLinks()
+        public void ClickMenuItemIfExists(string menuText)
         {
-            var links = driver.FindElements(homePageLinksSelector);
-            Console.WriteLine($"Total links found: {links.Count}");
+            var menuItems = GetMenuItems();
+            var item = menuItems.FirstOrDefault(e => e.Text.Equals(menuText, StringComparison.OrdinalIgnoreCase));
 
-            for (int i = 0; i < links.Count; i++)
+            if (item != null)
             {
-                // Re-locate link after navigation back to avoid stale element reference
-                var link = driver.FindElements(homePageLinksSelector)[i];
-                string linkText = link.Text;
-                string href = link.GetAttribute("href");
-
-                if (link.Displayed && link.Enabled)
-                {
-                    Console.WriteLine($"Clicking link: {linkText} ({href})");
-                    link.Click();
-                    driver.Navigate().Back();
-                }
-                else
-                {
-                    Console.WriteLine($"Link not clickable: {linkText}");
-                }
+                Console.WriteLine($"Clicking menu item: {menuText}");
+                item.Click();
+                driver.Navigate().Back();
             }
-
-            Console.WriteLine("All home page links tested successfully.");
+            else
+            {
+                Console.WriteLine($"Menu item '{menuText}' not found.");
+            }
         }
 
         public void VerifyFooterLink()
@@ -113,6 +94,28 @@ namespace TheInternetTest.Pages
             {
                 Console.WriteLine("GitHub ribbon link not found.");
             }
+        }
+
+        public void ExecuteAllTests()
+        { 
+
+            Console.WriteLine("\n-- Clicking 'Home' menu item if available --");
+            ClickMenuItemIfExists("Home");
+
+            Console.WriteLine("\n-- Clicking 'About' menu item if available --");
+            ClickMenuItemIfExists("About");
+
+            Console.WriteLine("\n-- Clicking 'Contact Us' menu item if available --");
+            ClickMenuItemIfExists("Contact Us");
+
+            Console.WriteLine("\n-- Clicking 'Portfolio' menu item if available --");
+            ClickMenuItemIfExists("Portfolio");
+
+            Console.WriteLine("\n-- Verifying footer link --");
+            VerifyFooterLink();
+
+            Console.WriteLine("\n-- Verifying GitHub link --");
+            VerifyGithubLink();
         }
     }
 }

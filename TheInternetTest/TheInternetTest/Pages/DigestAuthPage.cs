@@ -1,33 +1,32 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace TheInternetTest.Pages
 {
-    public class AbTestPage
+    public class DigestAuthPage
     {
-        private IWebDriver driver;
-        private string pageUrl = "https://the-internet.herokuapp.com/abtest";
-
+        private IWebDriver driver; 
         private By footerLinkSelector = By.CssSelector("#page-footer a");
-        private By headingSelector = By.CssSelector("div.example h3");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
-        public AbTestPage(IWebDriver webDriver)
+        public DigestAuthPage(IWebDriver webDriver)
         {
             driver = webDriver;
-            driver.Navigate().GoToUrl(pageUrl);
-            Console.WriteLine($"Navigated to {pageUrl}");
         }
 
         public void ExecuteAllTests()
         {
-            Console.WriteLine($"Navigated to {pageUrl}");
+            Console.WriteLine("\n-- Verifying Negative test cases --");
+            NegativeAuthTest("wronguser", "wrongpass");
+            NegativeAuthTest("", "");
+            NegativeAuthTest("wronguser", "admin");
+            NegativeAuthTest("admin", "wrongpass");
+            NegativeAuthTest("", "wrongpass");
+            NegativeAuthTest("wronguser", "");
+            NegativeAuthTest("admin", "");
+            NegativeAuthTest("", "admin");
 
-            Console.WriteLine("\n-- Verifying Page title --");
-            VerifyPageTitle();
-
-            Console.WriteLine("\n-- Verifying existence of Heading --");
-            VerifyHeadingExists();
+            Console.WriteLine("\n-- Verifying Positive test case --");
+            PositiveAuthTest("admin", "admin");
 
             Console.WriteLine("\n-- Verifying footer link --");
             VerifyFooterLink();
@@ -36,30 +35,62 @@ namespace TheInternetTest.Pages
             VerifyGithubLink();
         }
 
-
-        public void VerifyPageTitle()
+        public void PositiveAuthTest(string username, string password)
         {
-            string expectedTitle = "The Internet";
-            string actualTitle = driver.Title;
+            string authUrl = $"https://{username}:{password}@the-internet.herokuapp.com/digest_auth";
+            driver.Navigate().GoToUrl(authUrl);
 
-            if (actualTitle == expectedTitle)
-                Console.WriteLine($"Page title verified: {actualTitle}");
-            else
-                Console.WriteLine($"Page title mismatch! Actual: {actualTitle}");
-        }
-
-        public void VerifyHeadingExists()
-        {
             try
             {
-                var heading = driver.FindElement(headingSelector);
-                Console.WriteLine($"Found heading: {heading.Text}");
+                var message = driver.FindElement(By.CssSelector("div.example p")).Text;
+                if (message.Contains("Congratulations!"))
+                {
+                    Console.WriteLine($"Positive Test Passed with credentials {username}:{password}");
+                    Console.WriteLine($"Successful link: {driver.Url}");
+                }
+                else
+                {
+                    Console.WriteLine($"Positive Test Failed: Unexpected content with {username}:{password}");
+                }
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Heading not found on A/B Test page.");
+                Console.WriteLine($"Positive Test Failed: Element not found with {username}:{password}");
             }
         }
+
+        public void NegativeAuthTest(string username, string password)
+        {
+            string authUrl = $"https://{username}:{password}@the-internet.herokuapp.com/digest_auth";
+            driver.Navigate().GoToUrl(authUrl);
+
+            bool isUnauthorized = false;
+
+            try
+            {
+                var message = driver.FindElement(By.CssSelector("div.example p")).Text;
+                if (message.Contains("Congratulations!"))
+                {
+                    Console.WriteLine($"Negative Test Failed: Unexpected success with {username}:{password}");
+                }
+                else
+                {
+                    Console.WriteLine($"Negative Test Passed: No success message with {username}:{password}");
+                    isUnauthorized = true;
+                }
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine($"Negative Test Passed: Page blocked or element missing for {username}:{password}");
+                isUnauthorized = true;
+            }
+
+            if (isUnauthorized)
+            {
+                Console.WriteLine($"Test result: Unauthorized access attempt correctly handled for {username}:{password}");
+            }
+        }
+
         public void VerifyFooterLink()
         {
             try

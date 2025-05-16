@@ -21,6 +21,9 @@ namespace TheInternetTest
                 //RunChallengingDomPageTests(driver);
                 //RunCheckboxesPageTests(driver);
                 //RunContextMenuPageTests(driver);
+                //RunDigestAuthPageTests(driver);
+                //RunDisappearingElementsPageTests(driver);
+                //RunDragAndDropPageTests(driver);
 
             }
             catch (Exception ex)
@@ -121,6 +124,39 @@ namespace TheInternetTest
             contextMenuPage.ExecuteAllTests();
 
             Console.WriteLine("===== Context Menu Page Tests Completed =====\n");
+        }
+
+        // Function to execute Digest Auth Page tests
+        static void RunDigestAuthPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Digest Auth Page Tests =====");
+
+            DigestAuthPage digestAuthPage = new DigestAuthPage(driver);
+            digestAuthPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Digest Auth Page Tests Completed =====\n");
+        }
+
+        // Function to execute Disappearing Elements Page tests
+        static void RunDisappearingElementsPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Disappearing Elements Page Tests =====");
+
+            DisappearingElementsPage disappearingPage = new DisappearingElementsPage(driver);
+            disappearingPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Disappearing Elements Page Tests Completed =====\n");
+        }
+
+        // Function to execute drag and drop page tests
+        static void RunDragAndDropPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Drag And Drop Page Tests =====");
+
+            DragAndDropPage dragAndDropPage = new DragAndDropPage(driver);
+            dragAndDropPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Drag And Drop Page Tests Completed =====\n");
         }
 
     }

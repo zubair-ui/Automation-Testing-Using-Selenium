@@ -1,62 +1,50 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 
 namespace TheInternetTest.Pages
 {
-    public class HomePage
+    public class DragAndDropPage
     {
         private IWebDriver driver;
-        private string url = "https://the-internet.herokuapp.com/";
+        private string url = "https://the-internet.herokuapp.com/drag_and_drop";
+        private By columnASelector = By.Id("column-a");
+        private By columnBSelector = By.Id("column-b");
         private By footerLinkSelector = By.CssSelector("#page-footer a");
-        private By homePageLinksSelector = By.CssSelector("ul li a");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
-        public HomePage(IWebDriver driver)
+        public DragAndDropPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
         }
 
-        public void ExecuteAllTests()
+        public void DragAtoB()
         {
-
-            Console.WriteLine("\n-- Verifying and Clicking all links --");
-            VerifyAndClickAllLinks();
-            
-            Console.WriteLine("\n-- Verifying footer link --");
-            VerifyFooterLink();
-
-            Console.WriteLine("\n-- Verifying Github link --");
-            VerifyGithubLink();
-        }
-         
-
-        public void VerifyAndClickAllLinks()
-        {
-            var links = driver.FindElements(homePageLinksSelector);
-            Console.WriteLine($"Total links found: {links.Count}");
-
-            for (int i = 0; i < links.Count; i++)
+            try
             {
-                // Re-locate link after navigation back to avoid stale element reference
-                var link = driver.FindElements(homePageLinksSelector)[i];
-                string linkText = link.Text;
-                string href = link.GetAttribute("href");
+                var columnA = driver.FindElement(columnASelector);
+                var columnB = driver.FindElement(columnBSelector);
 
-                if (link.Displayed && link.Enabled)
-                {
-                    Console.WriteLine($"Clicking link: {linkText} ({href})");
-                    link.Click();
-                    driver.Navigate().Back();
-                }
-                else
-                {
-                    Console.WriteLine($"Link not clickable: {linkText}");
-                }
+                Actions action = new Actions(driver);
+                action.DragAndDrop(columnA, columnB).Perform();
+
+                Console.WriteLine("Performed drag and drop: A → B.");
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Drag and drop failed: {ex.Message}");
+            }
+        }
 
-            Console.WriteLine("All home page links tested successfully.");
+        public void VerifyDragResult()
+        {
+            var columnAHeader = driver.FindElement(columnASelector).Text;
+            var columnBHeader = driver.FindElement(columnBSelector).Text;
+
+            Console.WriteLine($"Column A now has: {columnAHeader}");
+            Console.WriteLine($"Column B now has: {columnBHeader}");
         }
 
         public void VerifyFooterLink()
@@ -113,6 +101,23 @@ namespace TheInternetTest.Pages
             {
                 Console.WriteLine("GitHub ribbon link not found.");
             }
+        }
+
+
+
+        public void ExecuteAllTests()
+        {
+            Console.WriteLine("\n-- Performing drag and drop --");
+            DragAtoB();
+
+            Console.WriteLine("\n-- Verifying drag and drop result --");
+            VerifyDragResult();
+
+            Console.WriteLine("\n-- Verifying footer link --");
+            VerifyFooterLink();
+
+            Console.WriteLine("\n-- Verifying GitHub link --");
+            VerifyGithubLink();
         }
     }
 }

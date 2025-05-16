@@ -8,6 +8,7 @@ namespace TheInternetTest.Pages
     {
         private IWebDriver driver;
         private string pageUrl = "https://the-internet.herokuapp.com/broken_images";
+        private By footerLinkSelector = By.CssSelector("#page-footer a");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
         public BrokenImagesPage(IWebDriver webDriver)
@@ -22,8 +23,14 @@ namespace TheInternetTest.Pages
 
             var images = GetAllImages();
             int brokenCount = CheckBrokenImages(images);
+
+            Console.WriteLine("\n-- Reporting Image Summary --");
             ReportImageSummary(images.Count, brokenCount);
-            ValidateFooterLink();
+
+            Console.WriteLine("\n-- Verifying footer link --");
+            VerifyFooterLink();
+
+            Console.WriteLine("\n-- Verifying GitHub link --");
             VerifyGithubLink();
         }
 
@@ -61,39 +68,54 @@ namespace TheInternetTest.Pages
             Console.WriteLine($"Total working images: {totalImages - brokenImages}");
         }
 
-        private void ValidateFooterLink()
+        public void VerifyFooterLink()
         {
-            var footerLink = driver.FindElement(By.CssSelector("#page-footer a"));
-            string linkText = footerLink.Text;
-            string linkHref = footerLink.GetAttribute("href");
+            try
+            {
+                var footerLink = driver.FindElement(footerLinkSelector);
+                string linkText = footerLink.Text;
+                string linkHref = footerLink.GetAttribute("href");
 
-            if (linkText.Contains("Elemental Selenium"))
-            {
-                Console.WriteLine("Found footer link: " + linkText);
-                Console.WriteLine("Link points to: " + linkHref);
-                footerLink.Click();
-                Console.WriteLine("Clicked footer link successfully.");
+                if (linkText.Contains("Elemental Selenium"))
+                {
+                    Console.WriteLine($"Found footer link: {linkText}");
+                    Console.WriteLine($"Link points to: {linkHref}");
+                    footerLink.Click();
+                    Console.WriteLine("Clicked footer link successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Footer link text mismatch.");
+                }
             }
-            else
+            catch (NoSuchElementException)
             {
-                Console.WriteLine("Footer link text mismatch.");
+                Console.WriteLine("'Powered by Elemental Selenium' link not found.");
             }
         }
+
         public void VerifyGithubLink()
         {
             try
             {
-                var githubRibbon = driver.FindElement(githubRibbonSelector);
-                var parentLink = githubRibbon.FindElement(By.XPath("..")); // get the anchor element
+                var githubRibbon = driver.FindElement(githubRibbonSelector); // img element
+                var parentLink = githubRibbon.FindElement(By.XPath("..")); // <a> element
                 string href = parentLink.GetAttribute("href");
 
                 if (href == "https://github.com/tourdedave/the-internet")
                 {
-                    Console.WriteLine("GitHub ribbon link found and verified.");
+                    Console.WriteLine("Found GitHub ribbon link.");
+                    Console.WriteLine($"Link points to: {href}");
+
+                    // Click the visible image instead of the <a>
+                    githubRibbon.Click();
+
+                    driver.Navigate().Back();
+                    Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
                 {
-                    Console.WriteLine($"GitHub ribbon link href mismatch: {href}");
+                    Console.WriteLine("GitHub ribbon link href mismatch.");
                 }
             }
             catch (NoSuchElementException)

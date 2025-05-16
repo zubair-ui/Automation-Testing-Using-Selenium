@@ -62,7 +62,6 @@ namespace TheInternetTest.Pages
                 {
                     Console.WriteLine($"Found footer link: {linkText}");
                     Console.WriteLine($"Link points to: {linkHref}");
-
                     footerLink.Click();
                     Console.WriteLine("Clicked footer link successfully.");
                 }
@@ -76,21 +75,29 @@ namespace TheInternetTest.Pages
                 Console.WriteLine("'Powered by Elemental Selenium' link not found.");
             }
         }
+
         public void VerifyGithubLink()
         {
             try
             {
-                var githubRibbon = driver.FindElement(githubRibbonSelector);
-                var parentLink = githubRibbon.FindElement(By.XPath("..")); // get the anchor element
+                var githubRibbon = driver.FindElement(githubRibbonSelector); // img element
+                var parentLink = githubRibbon.FindElement(By.XPath("..")); // <a> element
                 string href = parentLink.GetAttribute("href");
 
                 if (href == "https://github.com/tourdedave/the-internet")
                 {
-                    Console.WriteLine("GitHub ribbon link found and verified.");
+                    Console.WriteLine("Found GitHub ribbon link.");
+                    Console.WriteLine($"Link points to: {href}");
+
+                    // Click the visible image instead of the <a>
+                    githubRibbon.Click();
+
+                    driver.Navigate().Back();
+                    Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
                 {
-                    Console.WriteLine($"GitHub ribbon link href mismatch: {href}");
+                    Console.WriteLine("GitHub ribbon link href mismatch.");
                 }
             }
             catch (NoSuchElementException)
