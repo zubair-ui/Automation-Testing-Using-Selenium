@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\exitintentpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\exitintentpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|d:\\zubair\\study\\sqa bootcamp\\bootcamp project\\theinternettest\\theinternettest\\pages\\framespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{073BDE61-D8FD-4B00-BC53-070BA38A821C}|TheInternetTest\\TheInternetTest.csproj|solutionrelative:theinternettest\\pages\\framespage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HomePage.cs",
-              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
-              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\HomePage.cs",
-              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
-              "RelativeToolTip": "TheInternetTest\\Pages\\HomePage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
+              "Title": "FramesPage.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\FramesPage.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\FramesPage.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\FramesPage.cs",
+              "RelativeToolTip": "TheInternetTest\\Pages\\FramesPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T06:34:11.977Z",
+              "WhenOpened": "2025-05-16T07:54:01.755Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Program.cs",
-              "RelativeDocumentMoniker": "TheInternetTest\\Program.cs",
-              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Program.cs",
-              "RelativeToolTip": "TheInternetTest\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOYAAAA1AAAAAAAAAA==",
+              "Title": "HomePage.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\HomePage.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\HomePage.cs",
+              "RelativeToolTip": "TheInternetTest\\Pages\\HomePage.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAgwDwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T06:33:10.783Z",
+              "WhenOpened": "2025-05-16T07:08:21.44Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ExitIntentPage.cs",
-              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\ExitIntentPage.cs",
-              "RelativeDocumentMoniker": "TheInternetTest\\Pages\\ExitIntentPage.cs",
-              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Pages\\ExitIntentPage.cs",
-              "RelativeToolTip": "TheInternetTest\\Pages\\ExitIntentPage.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwCAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Program.cs",
+              "RelativeDocumentMoniker": "TheInternetTest\\Program.cs",
+              "ToolTip": "D:\\Zubair\\study\\SQA BootCamp\\Bootcamp Project\\TheInternetTest\\TheInternetTest\\Program.cs",
+              "RelativeToolTip": "TheInternetTest\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T06:31:52.752Z",
+              "WhenOpened": "2025-05-16T06:33:10.783Z",
               "EditorCaption": ""
             }
           ]

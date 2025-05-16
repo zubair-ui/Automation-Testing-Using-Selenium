@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TheInternetTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+795261744e8d942ed4beba8eb8a481ddf3df55e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02a185f4accd9cf9e66d4c26c490d92e327efc00")]
 [assembly: System.Reflection.AssemblyProductAttribute("TheInternetTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TheInternetTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

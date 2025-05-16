@@ -29,7 +29,13 @@ namespace TheInternetTest
                 //RunDynamicControlsPageTests(driver);
                 //RunDynamicLoadingPageTests(driver);
                 //RunEntryAdPageTests(driver);
-                RunExitIntentPageTests(driver);
+                //RunExitIntentPageTests(driver);
+                //RunFileDownloadPageTests(driver);
+                //RunFileUploadPageTests(driver);
+                //RunFloatingMenuPageTests(driver);
+                //RunForgotPasswordPageTests(driver);
+                //RunFormAuthenticationPageTests(driver);
+                RunFramesPageTests(driver);
             }
             catch (Exception ex)
             {
@@ -229,6 +235,72 @@ namespace TheInternetTest
             exitIntentPage.ExecuteAllTests();
 
             Console.WriteLine("===== Exit Intent Page Tests Completed =====\n");
+        }
+
+        // Function to execute file download page tests
+        static void RunFileDownloadPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting File Download Page Tests =====");
+
+            FileDownloadPage fileDownloadPage = new FileDownloadPage(driver);
+            fileDownloadPage.ExecuteAllTests();
+
+            Console.WriteLine("===== File Download Page Tests Completed =====\n");
+        }
+
+        // Function to execute file upload page tests
+        static void RunFileUploadPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting File Upload Page Tests =====");
+
+            FileUploadPage fileUploadPage = new FileUploadPage(driver);
+            fileUploadPage.ExecuteAllTests();
+
+            Console.WriteLine("===== File Upload Page Tests Completed =====\n");
+        }
+
+        // Function to execute Floating Menu page tests
+        static void RunFloatingMenuPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Floating Menu Page Tests =====");
+
+            FloatingMenuPage floatingMenuPage = new FloatingMenuPage(driver);
+            floatingMenuPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Floating Menu Page Tests Completed =====\n");
+        }
+
+        // Function to execute Forgot Password page tests
+        static void RunForgotPasswordPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Forgot Password Page Tests =====");
+
+            ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
+            forgotPasswordPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Forgot Password Page Tests Completed =====\n");
+        }
+
+        // Function to execute Forgot Password page tests
+        static void RunFormAuthenticationPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Form Authentication Page Tests =====");
+
+            FormAuthenticationPage formPage = new FormAuthenticationPage(driver);
+            formPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Form Authentication Page Tests Completed =====\n");
+        }
+
+        // Function to execute Frames page tests
+        static void RunFramesPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Frames Page Tests =====");
+
+            FramesPage framesPage = new FramesPage(driver);
+            framesPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Frames Page Tests Completed =====\n");
         }
 
     }
