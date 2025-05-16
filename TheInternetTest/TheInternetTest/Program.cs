@@ -40,7 +40,8 @@ namespace TheInternetTest
                 //RunSliderPageTests(driver);
                 //RunHoversPageTests(driver);
                 //RunInfiniteScrollPageTests(driver);
-                RunInputsPageTests(driver);
+                //RunInputsPageTests(driver);
+                //RunJQueryUIMenuPageTests(driver);
 
             }
             catch (Exception ex)
@@ -363,6 +364,17 @@ namespace TheInternetTest
             inputsPage.ExecuteAllTests();
 
             Console.WriteLine("===== Inputs Page Tests Completed =====\n");
+        }
+
+        // Function to execute jQuery UI Menu page tests
+        static void RunJQueryUIMenuPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting jQuery UI Menu Page Tests =====");
+
+            JQueryUIMenuPage menuPage = new JQueryUIMenuPage(driver);
+            menuPage.ExecuteAllTests();
+
+            Console.WriteLine("===== jQuery UI Menu Page Tests Completed =====\n");
         }
 
     }
