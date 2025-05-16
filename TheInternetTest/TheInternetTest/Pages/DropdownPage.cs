@@ -1,61 +1,37 @@
-﻿using OpenQA.Selenium; 
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace TheInternetTest.Pages
 {
-    public class HomePage
+    public class DropdownPage
     {
         private IWebDriver driver;
-        private string url = "https://the-internet.herokuapp.com/";
-        private By footerLinkSelector = By.CssSelector("#page-footer a");
-        private By homePageLinksSelector = By.CssSelector("ul li a");
-        private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
 
-        public HomePage(IWebDriver driver)
+        private string url = "https://the-internet.herokuapp.com/dropdown";
+        private By dropdownSelector = By.Id("dropdown");
+        private By footerLinkSelector = By.XPath("//div[@id='page-footer']//a[contains(text(),'Elemental Selenium')]");
+        private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img");
+
+        public DropdownPage(IWebDriver driver)
         {
             this.driver = driver;
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
         }
 
-        public void ExecuteAllTests()
+        public void SelectOptionByValue(string value)
         {
-
-            Console.WriteLine("\n-- Verifying and Clicking all links --");
-            VerifyAndClickAllLinks();
-            
-            Console.WriteLine("\n-- Verifying footer link --");
-            VerifyFooterLink();
-
-            Console.WriteLine("\n-- Verifying Github link --");
-            VerifyGithubLink();
-        }
-         
-
-        public void VerifyAndClickAllLinks()
-        {
-            var links = driver.FindElements(homePageLinksSelector);
-            Console.WriteLine($"Total links found: {links.Count}");
-
-            for (int i = 0; i < links.Count; i++)
+            try
             {
-                // Re-locate link after navigation back to avoid stale element reference
-                var link = driver.FindElements(homePageLinksSelector)[i];
-                string linkText = link.Text;
-                string href = link.GetAttribute("href");
-
-                if (link.Displayed && link.Enabled)
-                {
-                    Console.WriteLine($"Clicking link: {linkText} ({href})");
-                    link.Click();
-                    driver.Navigate().Back();
-                }
-                else
-                {
-                    Console.WriteLine($"Link not clickable: {linkText}");
-                }
+                var dropdown = driver.FindElement(dropdownSelector);
+                var optionToSelect = dropdown.FindElement(By.CssSelector($"option[value='{value}']"));
+                optionToSelect.Click();
+                Console.WriteLine($"Selected option with value: {value}");
             }
-
-            Console.WriteLine("All home page links tested successfully.");
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine($"Option with value '{value}' not found in dropdown.");
+            }
         }
 
         public void VerifyFooterLink()
@@ -98,9 +74,9 @@ namespace TheInternetTest.Pages
                     Console.WriteLine($"Link points to: {href}");
 
                     // Click the visible image instead of the <a>
-                    githubRibbon.Click();
+                    //githubRibbon.Click();
 
-                    driver.Navigate().Back();
+                    //driver.Navigate().Back();
                     Console.WriteLine("Clicked GitHub ribbon image successfully.");
                 }
                 else
@@ -112,6 +88,21 @@ namespace TheInternetTest.Pages
             {
                 Console.WriteLine("GitHub ribbon link not found.");
             }
+        }
+
+
+
+        public void ExecuteAllTests()
+        {
+            Console.WriteLine("-- Verifying Dropdown Options --");
+            SelectOptionByValue("1");
+            SelectOptionByValue("2");
+
+            Console.WriteLine("-- Verifying Footer Link --");
+            VerifyFooterLink();
+
+            Console.WriteLine("-- Verifying GitHub Link --");
+            VerifyGithubLink();
         }
     }
 }

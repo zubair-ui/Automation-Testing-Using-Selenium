@@ -24,6 +24,10 @@ namespace TheInternetTest
                 //RunDigestAuthPageTests(driver);
                 //RunDisappearingElementsPageTests(driver);
                 //RunDragAndDropPageTests(driver);
+                //RunDropdownPageTests(driver);
+                //RunDynamicContentPageTests(driver);
+                //RunDynamicControlsTests(driver);
+
 
             }
             catch (Exception ex)
@@ -158,6 +162,41 @@ namespace TheInternetTest
 
             Console.WriteLine("===== Drag And Drop Page Tests Completed =====\n");
         }
+
+        // Function to execute Dropdown page tests
+        static void RunDropdownPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Dropdown Page Tests =====");
+
+            DropdownPage dropdownPage = new DropdownPage(driver);
+            dropdownPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Dropdown Page Tests Completed =====\n");
+        }
+
+        // Function to execute Dynamic Content page tests
+        static void RunDynamicContentPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Dynamic Content Page Tests =====");
+
+            var dynamicContentPage = new DynamicContentPage(driver);
+            dynamicContentPage.ExecuteAllTests();
+;
+
+            Console.WriteLine("===== Dynamic Content Page Tests Completed =====\n");
+        }
+
+        // Function to execute Dynamic Controls page tests
+        static void RunDynamicControlsTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Dynamic Controls Tests =====");
+
+            DynamicControlsPage dynamicControlsPage = new DynamicControlsPage(driver);
+            dynamicControlsPage.ExecuteAll();
+
+            Console.WriteLine("===== Dynamic Controls Tests Completed =====\n");
+        }
+
 
     }
 }

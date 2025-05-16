@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
+﻿using OpenQA.Selenium; 
 
 namespace TheInternetTest.Pages
 {
