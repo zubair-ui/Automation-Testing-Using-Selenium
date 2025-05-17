@@ -49,7 +49,10 @@ namespace TheInternetTest
                 //RunLargeAndDeepDomPageTests(driver);
                 //RunMultipleWindowsPageTests(driver);
                 //RunFramesetPageTests(driver);
-                RunNotificationMessagePageTests(driver);
+                //RunNotificationMessagePageTests(driver);
+                //RunRedirectionPageTests(driver);
+                //RunShadowDomPageTests(driver);
+                RunShiftingContentPageTests(driver);
             }
             catch (Exception ex)
             {
@@ -449,6 +452,40 @@ namespace TheInternetTest
 
             Console.WriteLine("===== Notification Message Page Tests Completed =====\n");
         }
+
+        // Function to execute Redirection page tests
+        static void RunRedirectionPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Redirection Page Tests =====");
+
+            RedirectionPage redirectionPage = new RedirectionPage(driver);
+            redirectionPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Redirection Page Tests Completed =====\n");
+        }
+
+        // Function to execute Shadow DOM page tests
+        static void RunShadowDomPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Shadow DOM Page Tests =====");
+
+            ShadowDomPage shadowDomPage = new ShadowDomPage(driver);
+            shadowDomPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Shadow DOM Page Tests Completed =====\n");
+        }
+
+        // Function to execute Shifting Content Page tests
+        static void RunShiftingContentPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Shifting Content Page Tests =====");
+
+            ShiftingContentPage shiftingContentPage = new ShiftingContentPage(driver);
+            shiftingContentPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Shifting Content Page Tests Completed =====\n");
+        }
+
 
     }
 }
