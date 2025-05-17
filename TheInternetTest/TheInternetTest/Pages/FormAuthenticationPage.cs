@@ -38,6 +38,7 @@ namespace TheInternetTest.Pages
 
             Console.WriteLine("\n-- Running Logout Test --");
             LogoutTest();
+             
 
             Console.WriteLine("\n-- Verifying footer link --");
             VerifyFooterLink();
@@ -78,6 +79,7 @@ namespace TheInternetTest.Pages
 
         public void NegativeLoginTest(string username, string password)
         {
+            driver.Navigate().GoToUrl(url);  // reload login page
 
             driver.FindElement(usernameInput).Clear();
             driver.FindElement(usernameInput).SendKeys(username);
@@ -105,6 +107,7 @@ namespace TheInternetTest.Pages
                 Console.WriteLine($"Negative login test failed for username='{username}' password='{password}': Flash message not found.");
             }
         }
+
 
         public void LogoutTest()
         {
@@ -176,5 +179,7 @@ namespace TheInternetTest.Pages
                 Console.WriteLine("GitHub ribbon link not found.");
             }
         }
+         
+
     }
 }

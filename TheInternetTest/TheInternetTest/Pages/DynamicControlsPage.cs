@@ -178,7 +178,7 @@ namespace TheInternetTest.Pages
             }
         }
 
-        public void ExecuteAll()
+        public void ExecuteAllTests()
         {
 
             var (checkboxPresent, checkboxButtonText, checkboxMessage) = ClickCheckboxButton();

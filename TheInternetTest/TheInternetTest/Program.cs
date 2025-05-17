@@ -15,44 +15,47 @@ namespace TheInternetTest
 
             try
             {
-                //RunHomePageTests(driver);
-                //RunAbTestPageTests(driver);
-                //RunAddRemoveElementsPageTests(driver);
-                //RunBasicAuthPageTests(driver);
-                //RunBrokenImagesPageTests(driver);
-                //RunChallengingDomPageTests(driver);
-                //RunCheckboxesPageTests(driver);
-                //RunContextMenuPageTests(driver);
-                //RunDigestAuthPageTests(driver);
-                //RunDisappearingElementsPageTests(driver);
-                //RunDragAndDropPageTests(driver);
-                //RunDropdownPageTests(driver);
-                //RunDynamicContentPageTests(driver);
-                //RunDynamicControlsPageTests(driver);
-                //RunDynamicLoadingPageTests(driver);
-                //RunEntryAdPageTests(driver);
-                //RunExitIntentPageTests(driver);
-                //RunFileDownloadPageTests(driver);
-                //RunFileUploadPageTests(driver);
-                //RunFloatingMenuPageTests(driver);
-                //RunForgotPasswordPageTests(driver);
-                //RunFormAuthenticationPageTests(driver);
-                //RunFramesPageTests(driver);
-                //RunGeolocationPageTests(driver);
-                //RunSliderPageTests(driver);
-                //RunHoversPageTests(driver);
-                //RunInfiniteScrollPageTests(driver);
-                //RunInputsPageTests(driver);
-                //RunJQueryUIMenuPageTests(driver);
-                //RunJavaScriptAlertsPageTests(driver);
-                //RunKeyPressesPageTests(driver);
-                //RunLargeAndDeepDomPageTests(driver);
-                //RunMultipleWindowsPageTests(driver);
-                //RunFramesetPageTests(driver);
-                //RunNotificationMessagePageTests(driver);
-                //RunRedirectionPageTests(driver);
-                //RunShadowDomPageTests(driver);
+
+                RunHomePageTests(driver);
+                RunAbTestPageTests(driver);
+                RunAddRemoveElementsPageTests(driver);
+                RunBasicAuthPageTests(driver);
+                RunBrokenImagesPageTests(driver);
+                RunChallengingDomPageTests(driver);
+                RunCheckboxesPageTests(driver);
+                RunContextMenuPageTests(driver);
+                RunDigestAuthPageTests(driver);
+                RunDisappearingElementsPageTests(driver);
+                RunDragAndDropPageTests(driver);
+                RunDropdownPageTests(driver);
+                RunDynamicContentPageTests(driver);
+                RunDynamicControlsPageTests(driver);
+                RunDynamicLoadingPageTests(driver);
+                RunEntryAdPageTests(driver);
+                RunExitIntentPageTests(driver);
+                RunFileDownloadPageTests(driver);
+                RunFileUploadPageTests(driver);
+                RunFloatingMenuPageTests(driver);
+                RunForgotPasswordPageTests(driver);
+                RunFormAuthenticationPageTests(driver);
+                RunFramesPageTests(driver);
+                RunGeolocationPageTests(driver);
+                RunSliderPageTests(driver);
+                RunHoversPageTests(driver);
+                RunInfiniteScrollPageTests(driver);
+                RunInputsPageTests(driver);
+                RunJQueryUIMenuPageTests(driver);
+                RunJavaScriptAlertsPageTests(driver);
+                RunKeyPressesPageTests(driver);
+                RunLargeAndDeepDomPageTests(driver);
+                RunMultipleWindowsPageTests(driver);
+                RunFramesetPageTests(driver);
+                RunNotificationMessagePageTests(driver);
+                RunRedirectionPageTests(driver);
+                RunShadowDomPageTests(driver);
                 RunShiftingContentPageTests(driver);
+                RunDataTablesPageTests(driver);
+                RunStatusCodesPageTests(driver);
             }
             catch (Exception ex)
             {
@@ -216,7 +219,7 @@ namespace TheInternetTest
             Console.WriteLine("===== Starting Dynamic Controls Page Tests =====");
 
             DynamicControlsPage dynamicControlsPage = new DynamicControlsPage(driver);
-            dynamicControlsPage.ExecuteAll();
+            dynamicControlsPage.ExecuteAllTests();
 
             Console.WriteLine("===== Dynamic Controls Page Tests Completed =====\n");
         }
@@ -227,7 +230,7 @@ namespace TheInternetTest
             Console.WriteLine("===== Starting Dynamic Loading Page Tests =====");
 
             var dynamicLoadingPage = new DynamicLoadingPage(driver);
-            dynamicLoadingPage.ExecuteAll();
+            dynamicLoadingPage.ExecuteAllTests();
 
             Console.WriteLine("===== Dynamic Loading Page Tests Completed =====\n");
         }
@@ -486,6 +489,27 @@ namespace TheInternetTest
             Console.WriteLine("===== Shifting Content Page Tests Completed =====\n");
         }
 
+        // Function to execute Data Tables Page tests
+        static void RunDataTablesPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Data Tables Page Tests =====");
+                        
+            DataTablesPage tablesPage = new DataTablesPage(driver);
+            tablesPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Data Tables Page Tests Completed =====\n");
+        }
+
+        // Function to execute Status Codes Page tests
+        static void RunStatusCodesPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Status Codes Page Tests =====");
+
+            StatusCodesPage statusCodesPage = new StatusCodesPage(driver);
+            statusCodesPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Status Codes Page Tests Completed =====\n");
+        }
 
     }
 }

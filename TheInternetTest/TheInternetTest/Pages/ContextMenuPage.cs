@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions; 
+using OpenQA.Selenium.Interactions;
+using System.Threading;
 
 namespace TheInternetTest.Pages
 {
@@ -10,6 +11,7 @@ namespace TheInternetTest.Pages
         private By hotSpotSelector = By.Id("hot-spot");
         private By footerLinkSelector = By.CssSelector("#page-footer a");
         private By githubRibbonSelector = By.CssSelector("a[href='https://github.com/tourdedave/the-internet'] img[alt='Fork me on GitHub']");
+        private By bodySelector = By.TagName("body"); // For clicking elsewhere
 
         public ContextMenuPage(IWebDriver driver)
         {
@@ -17,7 +19,6 @@ namespace TheInternetTest.Pages
             driver.Navigate().GoToUrl(url);
             Console.WriteLine($"Navigated to {url}");
         }
-         
 
         public void RightClickOnHotSpot()
         {
@@ -26,6 +27,20 @@ namespace TheInternetTest.Pages
             action.ContextClick(hotSpot).Perform();
             Console.WriteLine("Performed right-click (context click) on hot spot.");
         }
+        public void DisableRightClickMenu()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript(@"
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+    ");
+            Console.WriteLine("Disabled native right-click context menu.");
+        }
+
+
+
+
 
         public string GetAlertTextAndAccept()
         {
@@ -95,9 +110,12 @@ namespace TheInternetTest.Pages
 
         public void ExecuteAllTests()
         {
+            DisableRightClickMenu();
             Console.WriteLine("\n-- Right Clicking on Hotspot --");
             RightClickOnHotSpot();
+
             var alertText = GetAlertTextAndAccept();
+
             if (alertText == "You selected a context menu")
             {
                 Console.WriteLine("Alert text is correct.");
@@ -106,6 +124,8 @@ namespace TheInternetTest.Pages
             {
                 Console.WriteLine("Alert text is incorrect or alert missing.");
             }
+             
+
 
             Console.WriteLine("\n-- Verifying footer link --");
             VerifyFooterLink();

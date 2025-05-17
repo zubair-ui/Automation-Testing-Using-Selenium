@@ -72,6 +72,7 @@ namespace TheInternetTest.Pages
                 wait.Until(drv => modal.Displayed);
 
                 Console.WriteLine("Modal appeared after restart.");
+                Thread.Sleep(100);
                 driver.FindElement(closeButtonSelector).Click();
                 Console.WriteLine("Modal closed after restart.");
             }

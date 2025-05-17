@@ -99,7 +99,7 @@ namespace TheInternetTest.Pages
         }
 
          
-        public void ExecuteAll()
+        public void ExecuteAllTests()
         {
 
             // Click example links and return back
