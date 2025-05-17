@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using TheInternetApp.Pages;
 using TheInternetTest.Pages;
 
 namespace TheInternetTest
@@ -10,6 +11,7 @@ namespace TheInternetTest
         {
              
             IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
 
             try
             {
@@ -42,7 +44,12 @@ namespace TheInternetTest
                 //RunInfiniteScrollPageTests(driver);
                 //RunInputsPageTests(driver);
                 //RunJQueryUIMenuPageTests(driver);
-
+                //RunJavaScriptAlertsPageTests(driver);
+                //RunKeyPressesPageTests(driver);
+                //RunLargeAndDeepDomPageTests(driver);
+                //RunMultipleWindowsPageTests(driver);
+                //RunFramesetPageTests(driver);
+                RunNotificationMessagePageTests(driver);
             }
             catch (Exception ex)
             {
@@ -375,6 +382,72 @@ namespace TheInternetTest
             menuPage.ExecuteAllTests();
 
             Console.WriteLine("===== jQuery UI Menu Page Tests Completed =====\n");
+        }
+
+        // Function to execute JavaScript Alerts page tests
+        static void RunJavaScriptAlertsPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting JavaScript Alerts Page Tests =====");
+
+            JavaScriptAlertsPage jsAlertsPage = new JavaScriptAlertsPage(driver);
+            jsAlertsPage.ExecuteAllTests();
+
+            Console.WriteLine("===== JavaScript Alerts Page Tests Completed =====\n");
+        }
+
+        // Function to execute Key Presses page tests
+        static void RunKeyPressesPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Key Presses Page Tests =====");
+
+            KeyPressesPage keyPressesPage = new KeyPressesPage(driver);
+            keyPressesPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Key Presses Page Tests Completed =====\n");
+        }
+
+        // Function to execute Large & Deep DOM page tests
+        static void RunLargeAndDeepDomPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Large & Deep DOM Page Tests =====");
+
+            LargeAndDeepDomPage largeDomPage = new LargeAndDeepDomPage(driver);
+            largeDomPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Large & Deep DOM Page Tests Completed =====\n");
+        }
+
+        // Function to execute Multiple Windows page tests
+        static void RunMultipleWindowsPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Multiple Windows Page Tests =====");
+
+            MultipleWindowsPage multipleWindowsPage = new MultipleWindowsPage(driver);
+            multipleWindowsPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Multiple Windows Page Tests Completed =====\n");
+        }
+
+        // Function to execute Frameset page tests
+        static void RunFramesetPageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Frameset Page Tests =====");
+
+            NestedFramesPage framesetPage = new NestedFramesPage(driver);
+            framesetPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Frameset Page Tests Completed =====\n");
+        }
+
+        // Function to execute Notification Message page tests
+        static void RunNotificationMessagePageTests(IWebDriver driver)
+        {
+            Console.WriteLine("===== Starting Notification Message Page Tests =====");
+
+            NotificationMessagePage notificationPage = new NotificationMessagePage(driver);
+            notificationPage.ExecuteAllTests();
+
+            Console.WriteLine("===== Notification Message Page Tests Completed =====\n");
         }
 
     }
