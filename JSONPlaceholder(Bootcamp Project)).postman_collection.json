@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "3c70a4d2-c1c1-4e63-bdf4-ef0d70b9f4d3",
+		"name": "JSONPlaceholder(Bootcamp Project))",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35163465",
+		"_collection_link": "https://bootcamp-5120.postman.co/workspace/Bootcamp~ed6d25df-1eca-4726-8acd-88c37f57c827/collection/35163465-3c70a4d2-c1c1-4e63-bdf4-ef0d70b9f4d3?action=share&source=collection_link&creator=35163465"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "/posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:postID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/posts/25"
+					},
+					"response": []
+				},
+				{
+					"name": "/comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:postID/comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/posts/25/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:userID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/users/5"
+					},
+					"response": []
+				}
+			],
+			"description": "GET method API calls"
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "/posts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"New Post for Bootcamp\",\r\n    \"body\": \"Bootcamp is nice\",\r\n    \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/posts"
+					},
+					"response": []
+				},
+				{
+					"name": "/comments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\": 101,\r\n    \"name\": \"ANON\",\r\n    \"email\": \"anonymous@mymail.com\",\r\n    \"body\": \"Nice post!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "/todos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 2,\r\n    \"title\": \"Compelte RNN projects and uplaod on github\",\r\n    \"completed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/todos"
+					},
+					"response": []
+				},
+				{
+					"name": "/albums",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"Holiday Pics\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/albums"
+					},
+					"response": []
+				},
+				{
+					"name": "/photos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": 1,\r\n    \"title\": \"Sunset\",\r\n    \"url\": \"https://example.com/sunset.jpg\",\r\n    \"thumbnailUrl\": \"https://example.com/thumb.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/photos"
+					},
+					"response": []
+				}
+			],
+			"description": "POST method API calls"
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "/posts/:postID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 34,\r\n    \"title\": \"Updated Post usng my API call\",\r\n    \"body\": \"Updated content\",\r\n    \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/posts/34"
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:commentID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 12,\r\n    \"postId\": 2,\r\n    \"name\": \"Michael\",\r\n    \"email\": \"mike@google.com\",\r\n    \"body\": \"AI is hard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/comments/12"
+					},
+					"response": []
+				},
+				{
+					"name": "/todos/:todoID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15,\r\n    \"userId\": 2,\r\n    \"title\": \"Coding Hackathon\",\r\n    \"completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/todos/15"
+					},
+					"response": []
+				},
+				{
+					"name": "/albums/:albumID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"userId\": 1,\r\n    \"title\": \"UPDATE STUFF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/albums/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/photos/:photoID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 21,\r\n    \"albumId\": 1,\r\n    \"title\": \"Updated Photo\",\r\n    \"url\": \"https://this.com/photo.jpg\",\r\n    \"thumbnailUrl\": \"https://this.com/thumb.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/photos/21"
+					},
+					"response": []
+				}
+			],
+			"description": "PUT method API calls"
+		},
+		{
+			"name": "PATCH",
+			"item": [
+				{
+					"name": "/posts/:postID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"PATCH method using Postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/photos/23"
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:commentID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"body\": \"Python is a beautiful language but those identationss uff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/comments/61"
+					},
+					"response": []
+				},
+				{
+					"name": "/todos/:todoID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/todos/5"
+					},
+					"response": []
+				},
+				{
+					"name": "/albums/:albumID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Stan by Eminem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/albums/9"
+					},
+					"response": []
+				},
+				{
+					"name": "/photos/:photoID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Flowers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/photos/30"
+					},
+					"response": []
+				}
+			],
+			"description": "PATCH method API calls"
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "/posts/:postID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{URL}}/posts/21"
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:commentID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{URL}}/comments/5"
+					},
+					"response": []
+				},
+				{
+					"name": "/todos/:todoID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{URL}}/todos/14"
+					},
+					"response": []
+				},
+				{
+					"name": "/albums/:albumID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{URL}}/albums/34"
+					},
+					"response": []
+				},
+				{
+					"name": "/photos/:photoID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{URL}}/photos/45"
+					},
+					"response": []
+				}
+			],
+			"description": "DELETE method API calls"
+		}
+	]
+}
